@@ -1,0 +1,48 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: task_management_postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: hamssterr
+      POSTGRES_PASSWORD: hamssterr1002
+      POSTGRES_DB: todo_app
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: task_management_app
+
+    restart: unless-stopped
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      DATABASE_URL: postgresql://hamssterr:hamssterr1002@postgres:5432/todo_app
+
+      JWT_ACCESS_SECRET: hamssterr_secret
+      JWT_REFRESH_SECRET: hamssterr_secret_091321
+
+      DEFAULT_MANAGER_NAME: Default Manager
+      DEFAULT_MANAGER_EMAIL: manager@example.com
+      DEFAULT_MANAGER_PASSWORD: 123456
+
+    depends_on:
+      - postgres
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:
