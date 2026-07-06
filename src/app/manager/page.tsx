@@ -118,9 +118,9 @@ export default function ManagerDashboard() {
               <Skeleton className="h-16 w-full rounded-xl" />
               <Skeleton className="h-16 w-full rounded-xl" />
             </div>
-          ) : tasksData?.data?.length > 0 ? (
+          ) : (tasksData?.data?.length ?? 0) > 0 ? (
             <div className="space-y-4">
-              {tasksData.data.map((task: any) => (
+              {tasksData?.data?.map((task: any) => (
                 <div
                   key={task.id}
                   className="flex items-center justify-between rounded-xl border border-border/50 p-4 transition-all hover:bg-muted/50 hover:border-border">

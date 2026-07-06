@@ -43,7 +43,7 @@ export async function POST(req: Request) {
       name,
       email,
       password: passwordHash,
-      role: role ?? UserRole.EMPLOYEE,
+      role: (role as UserRole) ?? UserRole.EMPLOYEE,
     });
 
     await userRepository.save(user);

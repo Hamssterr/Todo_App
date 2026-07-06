@@ -4,7 +4,7 @@ import http from "@/services/http";
 
 export const userApi = {
   getUsers: async (params?: UserQueryParams) => {
-    const res = await http.get<PaginatedResponse<User>>("/users", {
+    const res = await http.get<PaginatedResponse<User[]>>("/users", {
       params,
     });
     return res.data;
