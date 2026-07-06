@@ -10,7 +10,7 @@ import {
   Index,
   type Relation,
 } from "typeorm";
-import type { User } from "./User";
+import { User } from "./User";
 
 import { TaskStatus, TaskPriority } from "@/types/task.type";
 
@@ -50,7 +50,7 @@ export class Task {
   @Column({ type: "uuid" })
   assignedToId!: string;
 
-  @ManyToOne("User", (user: User) => user.assignedTasks, {
+  @ManyToOne(() => User, (user: User) => user.assignedTasks, {
     nullable: false,
     onDelete: "RESTRICT",
   })
@@ -65,7 +65,7 @@ export class Task {
   @Column({ type: "uuid" })
   createdById!: string;
 
-  @ManyToOne("User", (user: User) => user.createdTasks, {
+  @ManyToOne(() => User, (user: User) => user.createdTasks, {
     nullable: false,
     onDelete: "RESTRICT",
   })

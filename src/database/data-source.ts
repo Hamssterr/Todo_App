@@ -13,7 +13,10 @@ export const AppDataSource = new DataSource({
   entities: [User, Task, UserSession],
   migrations: isCli ? ["src/database/migrations/*.ts"] : [],
   synchronize: false,
-  ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
+  ssl:
+    process.env.NODE_ENV === "production"
+      ? { rejectUnauthorized: false }
+      : false,
 });
 
 export async function getDataSource() {

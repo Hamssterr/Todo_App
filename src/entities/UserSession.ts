@@ -8,7 +8,7 @@ import {
   Index,
   type Relation,
 } from "typeorm";
-import type { User } from "./User";
+import { User } from "./User";
 
 @Entity("user_sessions")
 export class UserSession {
@@ -22,7 +22,7 @@ export class UserSession {
   @Column({ type: "uuid" })
   userId!: string;
 
-  @ManyToOne("User", (user: User) => user.sessions, {
+  @ManyToOne(() => User, (user: User) => user.sessions, {
     nullable: false,
     onDelete: "CASCADE",
   })
