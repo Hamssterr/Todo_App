@@ -84,23 +84,6 @@ export default function ManagerDashboard() {
             </p>
           </CardContent>
         </Card>
-
-        {/* System Health / Pending Card */}
-        <Card className="relative overflow-hidden group border-border/50 bg-linear-to-b from-background to-secondary/20 shadow-sm transition-all hover:shadow-md hover:border-chart-4/20">
-          <div className="absolute top-0 right-0 -mt-4 -mr-4 h-24 w-24 rounded-full bg-chart-4/10 blur-2xl transition-all duration-500 group-hover:bg-chart-4/20 group-hover:scale-150" />
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              System Status
-            </CardTitle>
-            <Clock className="h-4 w-4 text-chart-4" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold text-emerald-500">Online</div>
-            <p className="text-xs text-muted-foreground mt-1">
-              All services running smoothly
-            </p>
-          </CardContent>
-        </Card>
       </div>
 
       {/* Recent Tasks List */}
